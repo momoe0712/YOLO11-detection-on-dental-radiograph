@@ -1,0 +1,1495 @@
+New https://pypi.org/project/ultralytics/8.3.131 available 😃 Update with 'pip install -U ultralytics'
+Ultralytics 8.3.119 🚀 Python-3.10.16 torch-2.5.1 CUDA:0 (NVIDIA A100-SXM4-80GB, 81251MiB)
+[34m[1mengine/trainer: [0mtask=detect, mode=train, model=pre-trained/yolo11n.pt, data=dataset/data.yaml, epochs=500, time=None, patience=100, batch=16, imgsz=640, save=True, save_period=-1, cache=False, device=0, workers=1, project=None, name=train, exist_ok=False, pretrained=True, optimizer=auto, verbose=True, seed=0, deterministic=True, single_cls=False, rect=False, cos_lr=False, close_mosaic=10, resume=False, amp=True, fraction=1.0, profile=False, freeze=None, multi_scale=False, overlap_mask=True, mask_ratio=4, dropout=0.0, val=True, split=val, save_json=False, conf=None, iou=0.7, max_det=300, half=False, dnn=False, plots=True, source=None, vid_stride=1, stream_buffer=False, visualize=False, augment=False, agnostic_nms=False, classes=None, retina_masks=False, embed=None, show=False, save_frames=False, save_txt=False, save_conf=False, save_crop=False, show_labels=True, show_conf=True, show_boxes=True, line_width=None, format=torchscript, keras=False, optimize=False, int8=False, dynamic=False, simplify=True, opset=None, workspace=None, nms=False, lr0=0.01, lrf=0.01, momentum=0.937, weight_decay=0.0005, warmup_epochs=3.0, warmup_momentum=0.8, warmup_bias_lr=0.1, box=7.5, cls=0.5, dfl=1.5, pose=12.0, kobj=1.0, nbs=64, hsv_h=0.015, hsv_s=0.7, hsv_v=0.4, degrees=0.0, translate=0.1, scale=0.5, shear=0.0, perspective=0.0, flipud=0.0, fliplr=0.5, bgr=0.0, mosaic=1.0, mixup=0.0, cutmix=0.0, copy_paste=0.0, copy_paste_mode=flip, auto_augment=randaugment, erasing=0.4, cfg=None, tracker=botsort.yaml, save_dir=runs/detect/train
+Overriding model.yaml nc=80 with nc=4
+
+                   from  n    params  module                                       arguments                     
+  0                  -1  1       464  ultralytics.nn.modules.conv.Conv             [3, 16, 3, 2]                 
+  1                  -1  1      4672  ultralytics.nn.modules.conv.Conv             [16, 32, 3, 2]                
+  2                  -1  1      6640  ultralytics.nn.modules.block.C3k2            [32, 64, 1, False, 0.25]      
+  3                  -1  1     36992  ultralytics.nn.modules.conv.Conv             [64, 64, 3, 2]                
+  4                  -1  1     26080  ultralytics.nn.modules.block.C3k2            [64, 128, 1, False, 0.25]     
+  5                  -1  1    147712  ultralytics.nn.modules.conv.Conv             [128, 128, 3, 2]              
+  6                  -1  1     87040  ultralytics.nn.modules.block.C3k2            [128, 128, 1, True]           
+  7                  -1  1    295424  ultralytics.nn.modules.conv.Conv             [128, 256, 3, 2]              
+  8                  -1  1    346112  ultralytics.nn.modules.block.C3k2            [256, 256, 1, True]           
+  9                  -1  1    164608  ultralytics.nn.modules.block.SPPF            [256, 256, 5]                 
+ 10                  -1  1    249728  ultralytics.nn.modules.block.C2PSA           [256, 256, 1]                 
+ 11                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 12             [-1, 6]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 13                  -1  1    111296  ultralytics.nn.modules.block.C3k2            [384, 128, 1, False]          
+ 14                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 15             [-1, 4]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 16                  -1  1     32096  ultralytics.nn.modules.block.C3k2            [256, 64, 1, False]           
+ 17                  -1  1     36992  ultralytics.nn.modules.conv.Conv             [64, 64, 3, 2]                
+ 18            [-1, 13]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 19                  -1  1     86720  ultralytics.nn.modules.block.C3k2            [192, 128, 1, False]          
+ 20                  -1  1    147712  ultralytics.nn.modules.conv.Conv             [128, 128, 3, 2]              
+ 21            [-1, 10]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 22                  -1  1    378880  ultralytics.nn.modules.block.C3k2            [384, 256, 1, True]           
+ 23        [16, 19, 22]  1    431452  ultralytics.nn.modules.head.Detect           [4, [64, 128, 256]]           
+YOLO11n summary: 181 layers, 2,590,620 parameters, 2,590,604 gradients, 6.4 GFLOPs
+
+Transferred 448/499 items from pretrained weights
+Freezing layer 'model.23.dfl.conv.weight'
+[34m[1mAMP: [0mrunning Automatic Mixed Precision (AMP) checks...
+[34m[1mAMP: [0mchecks passed ✅
+[34m[1mtrain: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 1799.8±556.6 MB/s, size: 36.2 KB)
+[34m[1malbumentations: [0mBlur(p=0.01, blur_limit=(3, 7)), MedianBlur(p=0.01, blur_limit=(3, 7)), ToGray(p=0.01, num_output_channels=3, method='weighted_average'), CLAHE(p=0.01, clip_limit=(1.0, 4.0), tile_grid_size=(8, 8))
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 1484.9±724.9 MB/s, size: 35.7 KB)
+Plotting labels to runs/detect/train/labels.jpg... 
+[34m[1moptimizer:[0m 'optimizer=auto' found, ignoring 'lr0=0.01' and 'momentum=0.937' and determining best 'optimizer', 'lr0' and 'momentum' automatically... 
+[34m[1moptimizer:[0m AdamW(lr=0.00125, momentum=0.9) with parameter groups 81 weight(decay=0.0), 88 weight(decay=0.0005), 87 bias(decay=0.0)
+Image sizes 640 train, 640 val
+Using 1 dataloader workers
+Logging results to [1mruns/detect/train[0m
+Starting training for 500 epochs...
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.0000
+                   all        215       1657      0.025      0.483      0.102     0.0489
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.0488
+                   all        215       1657       0.67      0.244      0.209      0.117
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.1169
+                   all        215       1657      0.597      0.361      0.332      0.165
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.1653
+                   all        215       1657      0.746      0.458      0.517      0.308
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.3082
+                   all        215       1657      0.766      0.525      0.547      0.309
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.3089
+                   all        215       1657      0.808      0.527      0.614      0.375
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.3753
+                   all        215       1657      0.775      0.522      0.629      0.369
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.3690
+                   all        215       1657      0.584      0.545      0.586       0.35
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.3503
+                   all        215       1657      0.639      0.605       0.66      0.403
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.4032
+                   all        215       1657       0.63      0.636      0.659      0.402
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.4023
+                   all        215       1657      0.617      0.627      0.671      0.402
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.4021
+                   all        215       1657      0.585      0.686      0.687      0.424
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.4245
+                   all        215       1657      0.727      0.657       0.71      0.439
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.4385
+                   all        215       1657      0.686      0.605      0.668       0.41
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.4095
+                   all        215       1657      0.711      0.668      0.716      0.431
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.4308
+                   all        215       1657      0.705      0.696      0.711      0.453
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.4525
+                   all        215       1657      0.721      0.704      0.753       0.46
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.4597
+                   all        215       1657      0.699      0.723       0.77      0.468
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.4679
+                   all        215       1657      0.665      0.763       0.76      0.478
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.4784
+                   all        215       1657      0.641      0.681      0.701       0.42
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.4198
+                   all        215       1657      0.711      0.729      0.775      0.495
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.4946
+                   all        215       1657      0.646      0.736      0.753      0.478
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.4776
+                   all        215       1657      0.713      0.736      0.768      0.472
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.4722
+                   all        215       1657      0.778      0.701      0.762      0.453
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.4527
+                   all        215       1657      0.706      0.751      0.785      0.499
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.4988
+                   all        215       1657      0.719      0.728      0.783      0.491
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.4912
+                   all        215       1657      0.735      0.706      0.754      0.481
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.4808
+                   all        215       1657      0.766      0.732      0.812      0.516
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5163
+                   all        215       1657      0.776      0.702      0.785      0.501
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5012
+                   all        215       1657       0.75      0.737        0.8      0.518
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5178
+                   all        215       1657      0.709       0.78        0.8      0.506
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5059
+                   all        215       1657       0.78       0.77      0.814      0.517
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5166
+                   all        215       1657      0.777      0.761      0.829      0.539
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5390
+                   all        215       1657      0.773      0.777      0.825      0.548
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5478
+                   all        215       1657      0.777      0.741      0.801      0.508
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5078
+                   all        215       1657      0.763      0.712      0.795      0.502
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5018
+                   all        215       1657      0.806      0.745      0.829      0.544
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5442
+                   all        215       1657      0.768      0.713      0.801      0.519
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5186
+                   all        215       1657      0.737      0.753      0.808      0.519
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5189
+                   all        215       1657       0.75      0.773       0.81      0.532
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5324
+                   all        215       1657      0.805      0.777      0.845       0.56
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5602
+                   all        215       1657      0.775      0.744      0.809      0.529
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5288
+                   all        215       1657      0.793       0.75      0.819      0.529
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5295
+                   all        215       1657      0.805      0.742      0.818      0.531
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5305
+                   all        215       1657      0.729      0.812      0.822      0.543
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5427
+                   all        215       1657      0.772      0.712      0.813      0.528
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5278
+                   all        215       1657      0.788      0.775      0.839      0.549
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5491
+                   all        215       1657      0.751       0.79      0.827      0.518
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5179
+                   all        215       1657      0.807      0.791      0.847      0.545
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5452
+                   all        215       1657       0.76      0.787      0.825      0.536
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5360
+                   all        215       1657      0.771      0.804      0.847      0.561
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5605
+                   all        215       1657        0.8      0.792      0.845      0.563
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5625
+                   all        215       1657       0.81      0.791      0.853      0.568
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5675
+                   all        215       1657      0.763      0.779      0.825      0.533
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5329
+                   all        215       1657      0.773      0.833      0.854      0.565
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5648
+                   all        215       1657      0.841      0.708      0.818      0.539
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5391
+                   all        215       1657      0.775      0.818      0.844      0.566
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5656
+                   all        215       1657      0.795      0.783      0.821      0.537
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5369
+                   all        215       1657      0.857      0.748      0.837      0.561
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5612
+                   all        215       1657      0.781      0.775       0.83      0.554
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5537
+                   all        215       1657      0.842      0.777      0.843       0.57
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5695
+                   all        215       1657      0.823      0.782      0.847      0.569
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5686
+                   all        215       1657      0.806       0.79      0.844      0.564
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5643
+                   all        215       1657      0.765      0.827      0.849      0.577
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5770
+                   all        215       1657      0.801      0.801      0.837      0.552
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5517
+                   all        215       1657      0.705        0.7      0.741      0.486
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.4856
+                   all        215       1657      0.736      0.754      0.822      0.542
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5422
+                   all        215       1657      0.846      0.781      0.862      0.581
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5811
+                   all        215       1657      0.769      0.774      0.825      0.549
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5487
+                   all        215       1657      0.842      0.746      0.841      0.559
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5593
+                   all        215       1657      0.765      0.803      0.832      0.561
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5614
+                   all        215       1657      0.792      0.787      0.837      0.565
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5650
+                   all        215       1657      0.798      0.813      0.856      0.567
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5669
+                   all        215       1657      0.822      0.771      0.855      0.572
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5718
+                   all        215       1657      0.821      0.795      0.833      0.564
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5641
+                   all        215       1657      0.842       0.79      0.851      0.575
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5747
+                   all        215       1657      0.819      0.799       0.86      0.574
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5741
+                   all        215       1657      0.813       0.78      0.846      0.566
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5661
+                   all        215       1657      0.838      0.806      0.862      0.581
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5808
+                   all        215       1657       0.83      0.777      0.853      0.575
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5751
+                   all        215       1657      0.809      0.802      0.856       0.58
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5804
+                   all        215       1657      0.877      0.745      0.851      0.574
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5742
+                   all        215       1657      0.794      0.818      0.846      0.563
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5635
+                   all        215       1657      0.801      0.788      0.845      0.572
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5724
+                   all        215       1657      0.746      0.817      0.827      0.555
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5552
+                   all        215       1657      0.776      0.823      0.849      0.574
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5743
+                   all        215       1657      0.856      0.756      0.852      0.581
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5810
+                   all        215       1657      0.797      0.809      0.852      0.573
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5730
+                   all        215       1657      0.833      0.807      0.852      0.575
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5746
+                   all        215       1657       0.82      0.753      0.816      0.554
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5541
+                   all        215       1657        0.8      0.831      0.855      0.582
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5820
+                   all        215       1657      0.837      0.797      0.855      0.573
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5734
+                   all        215       1657      0.825        0.8      0.855      0.574
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5736
+                   all        215       1657      0.828      0.748      0.824      0.555
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5552
+                   all        215       1657      0.833      0.781      0.853      0.579
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5790
+                   all        215       1657      0.808      0.825      0.863      0.588
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5879
+                   all        215       1657      0.808      0.826      0.868      0.595
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5951
+                   all        215       1657      0.844      0.787      0.866      0.585
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5855
+                   all        215       1657       0.82      0.775       0.84      0.568
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5685
+                   all        215       1657      0.823      0.831      0.865      0.591
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5910
+                   all        215       1657      0.856      0.814      0.882      0.598
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5980
+                   all        215       1657      0.877      0.781      0.868      0.584
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5845
+                   all        215       1657       0.84        0.8      0.846      0.569
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5688
+                   all        215       1657      0.825      0.825      0.858      0.578
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5781
+                   all        215       1657      0.821      0.779      0.849      0.579
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5788
+                   all        215       1657      0.818      0.811      0.857      0.581
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5813
+                   all        215       1657      0.753       0.83      0.845      0.573
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5730
+                   all        215       1657      0.813      0.822      0.859      0.572
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5716
+                   all        215       1657      0.828      0.805      0.856      0.579
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5789
+                   all        215       1657      0.807      0.811      0.853      0.584
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5837
+                   all        215       1657      0.862      0.789      0.859       0.59
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5897
+                   all        215       1657      0.836      0.799      0.849      0.576
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5758
+                   all        215       1657       0.81      0.838      0.866      0.593
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5931
+                   all        215       1657      0.863      0.802      0.869      0.592
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5919
+                   all        215       1657      0.852      0.795      0.858      0.591
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5912
+                   all        215       1657      0.855      0.805      0.879      0.589
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5895
+                   all        215       1657      0.836      0.815      0.863      0.598
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5979
+                   all        215       1657      0.833      0.838      0.876      0.594
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5941
+                   all        215       1657      0.823      0.806      0.846      0.573
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5732
+                   all        215       1657      0.823      0.817       0.87      0.599
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5987
+                   all        215       1657      0.831      0.813      0.869      0.591
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5911
+                   all        215       1657      0.839      0.832      0.878      0.602
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6018
+                   all        215       1657      0.801      0.851      0.861      0.591
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5911
+                   all        215       1657      0.863      0.799      0.867      0.599
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5991
+                   all        215       1657      0.799      0.838      0.871      0.595
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5954
+                   all        215       1657        0.8        0.8       0.85      0.577
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5772
+                   all        215       1657      0.814      0.816      0.841      0.578
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5780
+                   all        215       1657      0.863      0.803      0.866      0.596
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5963
+                   all        215       1657       0.83      0.807       0.86      0.595
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5947
+                   all        215       1657      0.823      0.833      0.872      0.592
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5917
+                   all        215       1657      0.803      0.817      0.834      0.575
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5752
+                   all        215       1657      0.841      0.839      0.882      0.615
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6152
+                   all        215       1657       0.81      0.851      0.879      0.606
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6061
+                   all        215       1657       0.85      0.806      0.872        0.6
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6003
+                   all        215       1657      0.811      0.846      0.869      0.604
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6041
+                   all        215       1657      0.841      0.811       0.86      0.592
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5921
+                   all        215       1657      0.823      0.839       0.88      0.599
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5991
+                   all        215       1657      0.858      0.808       0.87        0.6
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6001
+                   all        215       1657      0.865      0.832      0.891      0.615
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6149
+                   all        215       1657      0.815      0.791       0.84      0.579
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5789
+                   all        215       1657      0.878       0.77      0.856      0.595
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5955
+                   all        215       1657       0.83      0.795       0.85      0.583
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5826
+                   all        215       1657      0.868      0.797      0.871      0.608
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6080
+                   all        215       1657      0.844      0.822      0.868      0.604
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6036
+                   all        215       1657      0.864       0.82      0.887      0.619
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6189
+                   all        215       1657      0.846      0.813      0.861      0.598
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.5982
+                   all        215       1657      0.855       0.82      0.879      0.603
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6030
+                   all        215       1657      0.841      0.824      0.888      0.617
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6165
+                   all        215       1657       0.85       0.81      0.876      0.608
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6077
+                   all        215       1657      0.852      0.821       0.88      0.619
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6188
+                   all        215       1657      0.834      0.854      0.872      0.608
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6076
+                   all        215       1657      0.857      0.814      0.878      0.607
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6066
+                   all        215       1657      0.836      0.809      0.866      0.609
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6089
+                   all        215       1657      0.845      0.825      0.872      0.605
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6048
+                   all        215       1657      0.844       0.83      0.873      0.613
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6131
+                   all        215       1657       0.87      0.847      0.899      0.628
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6282
+                   all        215       1657      0.845      0.822      0.873      0.605
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6054
+                   all        215       1657      0.859      0.815      0.892      0.613
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6132
+                   all        215       1657      0.846      0.874      0.898      0.632
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6320
+                   all        215       1657      0.843      0.833      0.883       0.62
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6199
+                   all        215       1657      0.839       0.84      0.884      0.621
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6213
+                   all        215       1657      0.849      0.841      0.894      0.619
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6189
+                   all        215       1657      0.886      0.819      0.878      0.609
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6095
+                   all        215       1657       0.86      0.846      0.882      0.616
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6160
+                   all        215       1657      0.877      0.824      0.875      0.611
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6109
+                   all        215       1657      0.835      0.831      0.865      0.611
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6110
+                   all        215       1657      0.864      0.842      0.882      0.624
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6241
+                   all        215       1657      0.881      0.833      0.887      0.623
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6233
+                   all        215       1657      0.856      0.838      0.885       0.62
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6203
+                   all        215       1657      0.882      0.822      0.882       0.62
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6203
+                   all        215       1657      0.824      0.856      0.877      0.608
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6083
+                   all        215       1657      0.861      0.837      0.888      0.617
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6168
+                   all        215       1657      0.889      0.805      0.889      0.616
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6162
+                   all        215       1657      0.864      0.842      0.886      0.633
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6327
+                   all        215       1657      0.834      0.855      0.884      0.624
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6241
+                   all        215       1657      0.862      0.836      0.886       0.63
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6298
+                   all        215       1657      0.862      0.827      0.878       0.62
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6202
+                   all        215       1657      0.862      0.849      0.884      0.632
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6319
+                   all        215       1657      0.852      0.837      0.884      0.626
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6261
+                   all        215       1657      0.844      0.826      0.879      0.628
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6280
+                   all        215       1657      0.852      0.826      0.885      0.613
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6127
+                   all        215       1657      0.898      0.797       0.89      0.633
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6326
+                   all        215       1657      0.819       0.87      0.897      0.634
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6336
+                   all        215       1657      0.853      0.852      0.886      0.629
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6285
+                   all        215       1657      0.847       0.86       0.89      0.627
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6271
+                   all        215       1657      0.891      0.838      0.897      0.631
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6314
+                   all        215       1657      0.854      0.844      0.887      0.633
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6332
+                   all        215       1657      0.872      0.838        0.9      0.638
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6379
+                   all        215       1657       0.85      0.858      0.896      0.633
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6326
+                   all        215       1657      0.891      0.818      0.896      0.646
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6462
+                   all        215       1657      0.895      0.818      0.895      0.645
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6447
+                   all        215       1657      0.887      0.817      0.887      0.628
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6276
+                   all        215       1657      0.876      0.835      0.887      0.634
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6341
+                   all        215       1657       0.88      0.829      0.886      0.634
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6340
+                   all        215       1657      0.849       0.85      0.895      0.635
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6350
+                   all        215       1657      0.869      0.834      0.893      0.629
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6293
+                   all        215       1657      0.875      0.844      0.894      0.645
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6453
+                   all        215       1657      0.868      0.853      0.891      0.642
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6416
+                   all        215       1657      0.883      0.845      0.897      0.644
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6438
+                   all        215       1657      0.877      0.851      0.892      0.641
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6406
+                   all        215       1657      0.858      0.852      0.888      0.642
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6419
+                   all        215       1657      0.878      0.856      0.894      0.643
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6431
+                   all        215       1657       0.88      0.844      0.892      0.646
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6456
+                   all        215       1657      0.899      0.838      0.905      0.656
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6558
+                   all        215       1657      0.892      0.839      0.902      0.652
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6524
+                   all        215       1657      0.895      0.829      0.894       0.64
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6402
+                   all        215       1657      0.885      0.834      0.898       0.64
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6400
+                   all        215       1657      0.887      0.821      0.877      0.619
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6187
+                   all        215       1657      0.884      0.832      0.888      0.635
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6352
+                   all        215       1657      0.862      0.853      0.885      0.634
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6340
+                   all        215       1657      0.883      0.844      0.884      0.636
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6365
+                   all        215       1657      0.856      0.855      0.899      0.639
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6389
+                   all        215       1657      0.875      0.828      0.885      0.639
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6387
+                   all        215       1657      0.888      0.848      0.903      0.654
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6543
+                   all        215       1657       0.85      0.887      0.904      0.651
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6514
+                   all        215       1657      0.872      0.855      0.901      0.654
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6543
+                   all        215       1657      0.864      0.858      0.898      0.655
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6547
+                   all        215       1657      0.892      0.846      0.902      0.651
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6512
+                   all        215       1657       0.89      0.843      0.905      0.658
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6585
+                   all        215       1657      0.872      0.849      0.905      0.652
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6525
+                   all        215       1657      0.895      0.835      0.889      0.643
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6431
+                   all        215       1657      0.868       0.86      0.906      0.651
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6505
+                   all        215       1657      0.872      0.851      0.905      0.654
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6535
+                   all        215       1657      0.872      0.852       0.91      0.664
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6636
+                   all        215       1657      0.863      0.854      0.894      0.648
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6480
+                   all        215       1657      0.861      0.843      0.886      0.644
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6442
+                   all        215       1657      0.905      0.834      0.904      0.658
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6578
+                   all        215       1657      0.914      0.836      0.905      0.664
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6639
+                   all        215       1657      0.859      0.866      0.902      0.659
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6594
+                   all        215       1657      0.877      0.857      0.897      0.653
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6525
+                   all        215       1657      0.858      0.861      0.905      0.655
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6548
+                   all        215       1657      0.845      0.868      0.905      0.655
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6551
+                   all        215       1657      0.887      0.832        0.9      0.647
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6467
+                   all        215       1657      0.863      0.859      0.892      0.658
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6580
+                   all        215       1657       0.88      0.852        0.9      0.653
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6526
+                   all        215       1657       0.88      0.838      0.896      0.654
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6540
+                   all        215       1657      0.879      0.858      0.893      0.656
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6560
+                   all        215       1657      0.887      0.841       0.89      0.649
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6494
+                   all        215       1657      0.882      0.836      0.885      0.644
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6442
+                   all        215       1657      0.844      0.881      0.897      0.657
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6573
+                   all        215       1657      0.889      0.845      0.889      0.648
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6476
+                   all        215       1657      0.883      0.852      0.904      0.658
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6582
+                   all        215       1657      0.889      0.851      0.903      0.655
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6548
+                   all        215       1657      0.878      0.857      0.898      0.654
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6542
+                   all        215       1657      0.887      0.844        0.9      0.661
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6610
+                   all        215       1657      0.907      0.823      0.891      0.654
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6544
+                   all        215       1657      0.891       0.82      0.895      0.649
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6488
+                   all        215       1657      0.895      0.818      0.895      0.653
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6532
+                   all        215       1657      0.905      0.827      0.895       0.66
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6602
+                   all        215       1657      0.892       0.86      0.912      0.668
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6684
+                   all        215       1657      0.868      0.888      0.922      0.675
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6751
+                   all        215       1657        0.9      0.824      0.907      0.668
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6675
+                   all        215       1657      0.873      0.858       0.91      0.667
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6672
+                   all        215       1657       0.85       0.88      0.905      0.665
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6652
+                   all        215       1657      0.903      0.852      0.914      0.669
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6692
+                   all        215       1657      0.897      0.844      0.914      0.667
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6672
+                   all        215       1657      0.888      0.849        0.9       0.67
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6695
+                   all        215       1657      0.899      0.845      0.917      0.677
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6772
+                   all        215       1657      0.879      0.874       0.91      0.664
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6641
+                   all        215       1657      0.887      0.873       0.91      0.669
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6690
+                   all        215       1657      0.922      0.826      0.901      0.665
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6653
+                   all        215       1657      0.921      0.822      0.896      0.661
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6607
+                   all        215       1657       0.89      0.846      0.901      0.663
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6631
+                   all        215       1657      0.906      0.855      0.905      0.668
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6682
+                   all        215       1657      0.897      0.829      0.905      0.661
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6606
+                   all        215       1657      0.904      0.855      0.918      0.673
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6729
+                   all        215       1657      0.896      0.844      0.909      0.671
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6711
+                   all        215       1657      0.889      0.861      0.913      0.679
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6788
+                   all        215       1657       0.87      0.858      0.899      0.665
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6653
+                   all        215       1657       0.89      0.856      0.909      0.674
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6742
+                   all        215       1657      0.895       0.84      0.908      0.675
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6754
+                   all        215       1657      0.867      0.884      0.911      0.678
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6777
+                   all        215       1657      0.887      0.862      0.904      0.673
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6729
+                   all        215       1657      0.898      0.846      0.905      0.671
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6715
+                   all        215       1657      0.891      0.833      0.904      0.669
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6687
+                   all        215       1657      0.891      0.843      0.908      0.678
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6781
+                   all        215       1657      0.869      0.847        0.9      0.668
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6675
+                   all        215       1657      0.903      0.836      0.903      0.676
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6758
+                   all        215       1657      0.882      0.847      0.895      0.666
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6659
+                   all        215       1657      0.881      0.853      0.901      0.675
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6753
+                   all        215       1657      0.865      0.874      0.906       0.67
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6704
+                   all        215       1657      0.887      0.862        0.9      0.671
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6706
+                   all        215       1657      0.888      0.863      0.905      0.674
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6744
+                   all        215       1657        0.9       0.86      0.915      0.684
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6844
+                   all        215       1657      0.908      0.839      0.911      0.682
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6824
+                   all        215       1657      0.901      0.854      0.912      0.682
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6824
+                   all        215       1657      0.898      0.845      0.901      0.674
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6736
+                   all        215       1657      0.881      0.867      0.909      0.679
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6785
+                   all        215       1657      0.911      0.843      0.908      0.679
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6785
+                   all        215       1657        0.9      0.854      0.912      0.685
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6848
+                   all        215       1657      0.865      0.872       0.91      0.681
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6812
+                   all        215       1657      0.859      0.875      0.913      0.679
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6791
+                   all        215       1657      0.874      0.873      0.916      0.686
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6861
+                   all        215       1657      0.892      0.866       0.91      0.681
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6807
+                   all        215       1657      0.881       0.86      0.905      0.675
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6753
+                   all        215       1657        0.9      0.858      0.906      0.678
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6778
+                   all        215       1657       0.91      0.848       0.91      0.678
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6778
+                   all        215       1657      0.885      0.859      0.917      0.685
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6852
+                   all        215       1657      0.894      0.853      0.914      0.685
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6846
+                   all        215       1657        0.9      0.859       0.91      0.678
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6784
+                   all        215       1657      0.888      0.876      0.914      0.685
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6846
+                   all        215       1657      0.891      0.879      0.919      0.691
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6910
+                   all        215       1657      0.906      0.871      0.919      0.692
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6920
+                   all        215       1657      0.921      0.853      0.916      0.685
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6854
+                   all        215       1657       0.89       0.86       0.91      0.679
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6793
+                   all        215       1657      0.884      0.862      0.908      0.679
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6795
+                   all        215       1657      0.894      0.856      0.906      0.683
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6834
+                   all        215       1657      0.893       0.87      0.915      0.686
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6864
+                   all        215       1657      0.912      0.853      0.915      0.685
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6846
+                   all        215       1657      0.911      0.841      0.908      0.681
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6811
+                   all        215       1657      0.897      0.838      0.906      0.683
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6833
+                   all        215       1657      0.895       0.85      0.915      0.694
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6939
+                   all        215       1657      0.903      0.858      0.914      0.691
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6910
+                   all        215       1657      0.873      0.869      0.899      0.679
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6790
+                   all        215       1657      0.863      0.882      0.905      0.677
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6773
+                   all        215       1657      0.879      0.872      0.905      0.683
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6830
+                   all        215       1657      0.903      0.847      0.902      0.682
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6823
+                   all        215       1657      0.883      0.845      0.902      0.682
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6817
+                   all        215       1657      0.885      0.861      0.906      0.679
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6790
+                   all        215       1657      0.871      0.865        0.9      0.672
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6725
+                   all        215       1657      0.899      0.825      0.895      0.678
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6776
+                   all        215       1657      0.899      0.856      0.904      0.681
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6810
+                   all        215       1657      0.893      0.846      0.901      0.678
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6778
+                   all        215       1657      0.895       0.84      0.897      0.682
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6820
+                   all        215       1657      0.884      0.854      0.902      0.684
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6840
+                   all        215       1657      0.881      0.859      0.893      0.675
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6752
+                   all        215       1657      0.902      0.859      0.907       0.68
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6801
+                   all        215       1657       0.91      0.864      0.904      0.684
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6836
+                   all        215       1657      0.883      0.877      0.903      0.678
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6784
+                   all        215       1657      0.898       0.86      0.906      0.687
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6875
+                   all        215       1657      0.901      0.861      0.913      0.694
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6942
+                   all        215       1657      0.914       0.86      0.906      0.689
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6886
+                   all        215       1657      0.909       0.85      0.902      0.684
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6845
+                   all        215       1657      0.894      0.858      0.904      0.686
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6863
+                   all        215       1657      0.888      0.873      0.898      0.686
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6865
+                   all        215       1657      0.887      0.865      0.903      0.683
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6826
+                   all        215       1657      0.895      0.864      0.906      0.684
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6844
+                   all        215       1657      0.891      0.862      0.904      0.687
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6871
+                   all        215       1657      0.917      0.848      0.905      0.687
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6869
+                   all        215       1657       0.87      0.879      0.907      0.688
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6883
+                   all        215       1657      0.906      0.849      0.906      0.687
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6867
+                   all        215       1657      0.897      0.857      0.902       0.68
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6798
+                   all        215       1657      0.906      0.845      0.908      0.684
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6840
+                   all        215       1657       0.92      0.844      0.909      0.685
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6850
+                   all        215       1657      0.912      0.856      0.907      0.692
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6919
+                   all        215       1657      0.889      0.866      0.902      0.691
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6913
+                   all        215       1657      0.885      0.878      0.905      0.689
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6886
+                   all        215       1657      0.886      0.865      0.901      0.687
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6874
+                   all        215       1657      0.887      0.875      0.902      0.688
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6875
+                   all        215       1657      0.904      0.866      0.903      0.692
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6916
+                   all        215       1657      0.895       0.86      0.904      0.692
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6918
+                   all        215       1657      0.913      0.852      0.911      0.692
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6915
+                   all        215       1657      0.918      0.853      0.908      0.688
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6878
+                   all        215       1657      0.908      0.859      0.912      0.691
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6908
+                   all        215       1657      0.903       0.86      0.911      0.694
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6940
+                   all        215       1657       0.93      0.828      0.912      0.695
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6946
+                   all        215       1657      0.889      0.872      0.911      0.694
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.6939
+                   all        215       1657      0.907      0.858      0.915      0.703
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+[Callback] Current mAP50-95: 0.7027
+[Callback] mAP50-95 reached 0.7027 (threshold: 0.7) — stopping early.
+[Info] Early stopping triggered successfully — training halted.
+[Info] Running final validation to generate visual outputs...
+Ultralytics 8.3.119 🚀 Python-3.10.16 torch-2.5.1 CUDA:0 (NVIDIA A100-SXM4-80GB, 81251MiB)
+YOLO11n summary (fused): 100 layers, 2,582,932 parameters, 13,260 gradients, 6.3 GFLOPs
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 1922.3±325.2 MB/s, size: 32.9 KB)
+                   all        215       1657       0.91      0.841      0.901      0.688
+                Cavity         49        144      0.865      0.708      0.803      0.584
+              Fillings        175       1074      0.923      0.912      0.951      0.707
+        Impacted Tooth         42         68      0.878      0.779      0.877      0.717
+               Implant        118        371      0.973      0.964      0.974      0.746
+Speed: 0.1ms preprocess, 4.1ms inference, 0.0ms loss, 1.3ms postprocess per image
+Results saved to [1mruns/detect/val6[0m
+[Info] Generating results.png in runs/detect/train
