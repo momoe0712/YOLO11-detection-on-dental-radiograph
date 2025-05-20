@@ -30,7 +30,7 @@ def train_model():
     try:
         results = model.train(
             data="--YOUR DATASET PATH--", #example: dataset/data.yaml
-            epochs=5,
+            epochs=500,
             imgsz=640,
             device=0,
             workers=1

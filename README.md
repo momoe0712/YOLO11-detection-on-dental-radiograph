@@ -40,6 +40,7 @@ Run this command in terminal:
 ## Directories Information
 - `dataset/`: Contains the dataset used for training, validation, and testing. Subdirectories include `train/`, `val/`, and `test/` directories. Check the datasets at [dataset](https://universe.roboflow.com/gozdes-projects/dental-x-ray-1imfs).
 - `output/`: Stores output logs or messages generated during each training iteration.
+- `rp/`: Stores output logs for the earlystopping itteration.
 - `runs/`: Includes all results and artifacts generated from the training process, such as model checkpoints and metrics. Check the full result at [Result Google Drive](https://drive.google.com/drive/folders/15E7v1GZnyVupQ03RYm36dr_FcWazUD3u?usp=sharing).
 
 ## License
