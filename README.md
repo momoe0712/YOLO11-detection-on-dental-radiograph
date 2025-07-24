@@ -10,7 +10,7 @@ The training process is carried out using a Dental X-Ray dataset focusing on den
 - `Impacted Tooth`
 - `Implant`
 
-## Installation
+## 📦 Installation
 
 ### Step 1: Install all of the Requirement Dependencies 
 Install all of the dependencies in the `requirements.txt`:
@@ -26,28 +26,28 @@ Open the `main.py` file and set the path for model and the dataset.
 2. For Testing:
 Open the `test.py` file and set the path for the pre-trained model and the path for input photo.
 
-## Training 
+## 🏋️‍♂️ Training 
 Run this command in terminal:
     
     python main.py
     
-## Testing
+## 🧪 Testing
 Run this command in terminal:
     
     python test.py
     
     
-## Directories Information
+## 📁 Directories Information
 - `dataset/`: Contains the dataset used for training, validation, and testing. Subdirectories include `train/`, `val/`, and `test/` directories. Check the datasets at [dataset](https://universe.roboflow.com/gozdes-projects/dental-x-ray-1imfs).
 - `output/`: Stores output logs or messages generated during each training iteration.
 - `rp/`: Stores output logs for the earlystopping itteration.
 - `runs/`: Includes all results and artifacts generated from the training process, such as model checkpoints and metrics. Check the full result at [Result Google Drive](https://drive.google.com/drive/folders/15E7v1GZnyVupQ03RYm36dr_FcWazUD3u?usp=sharing).
 
-## Publication
+## 📰 Publication
 - This research is currently under review for publication at the [International Conference Sustainable Information Engineering and Technology (SIET)](https://siet.ub.ac.id/).
 - Document: [View Paper](https://drive.google.com/file/d/1MdMCEcTHEG_jPjRXXfglJy7Ndw3NZllI/view?usp=drive_link)
 - Status: Under Review
 
-## License
+## 📜 License
 This repository follows the license guidelines of the original YOLOv11 project. For more details, refer to the [YOLOv11 License](https://docs.ultralytics.com/models/yolo11/#what-are-the-key-improvements-in-ultralytics-yolo11-compared-to-previous-versions)
     
